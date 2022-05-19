@@ -270,11 +270,11 @@ Which variables were most useful? Which were least useful? Are these results wha
 pokemon_rf_final <- finalize_workflow(pokemon_rf_workflow, best_parameter_rf)
 pokemon_rf_final_fit <- fit(pokemon_rf_final, data = train)
 
-# visualizing decision tree - FOR SOME REASON THIS ISNT WORKING
-# vip(pokemon_rf_final_fit)
+# visualizing decision tree 
+pokemon_rf_final_fit %>% extract_fit_engine() %>% vip()
 ```
 
-The variables that are the most useful are . The variables that are the least useful are . This is/isn't what we expected because . 
+The variables that is the most useful is by far special attack, which is almost 3x as important as the following variables of attack, special defense, and speed. The variables that are the least useful are generation_x2 and generation_x5. This is sort've what I expected because in the games certain pokemon are known for their special attack stats, so it would be a very useful predictor to be identifying the type of a pokemon based on that stat profile. 
 
 ### Exercise 9
 
